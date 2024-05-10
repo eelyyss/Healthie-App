@@ -35,19 +35,19 @@ router.get('/tasks', (req, res) => {
             _id: '1',
             name: "task one",
             description: 'asdadasd',
-            date: "2019-11-06T15:50:18.921Z"
+            date: "2024-05-10T15:50:18.921Z"
         },
         {
             _id: '2',
             name: "task two",
             description: 'asdadasd',
-            date: "2019-11-06T15:50:18.921Z"
+            date: "2024-05-10T15:50:18.921Z"
         },
         {
             _id: '3',
             name: "task three",
             description: 'asdadasd',
-            date: "2019-11-06T15:50:18.921Z"
+            date: "2024-05-10T15:50:18.921Z"
         },
     ])
 });
@@ -58,19 +58,19 @@ router.get('/private-tasks', verifyToken, (req, res) => {
             _id: '1',
             name: "task one",
             description: 'asdadasd',
-            date: "2019-11-06T15:50:18.921Z"
+            date: "2024-05-10T15:50:18.921Z"
         },
         {
             _id: '2',
             name: "task two",
             description: 'asdadasd',
-            date: "2019-11-06T15:50:18.921Z"
+            date: "2024-05-10T15:50:18.921Z"
         },
         {
             _id: '3',
             name: "task three",
             description: 'asdadasd',
-            date: "2019-11-06T15:50:18.921Z"
+            date: "2024-05-10T15:50:18.921Z"
         },
     ])
 });
