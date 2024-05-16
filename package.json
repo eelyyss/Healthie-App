@@ -2,7 +2,6 @@
   "name": "healthie-app",
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon src/index.js",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -19,7 +18,9 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.4",
