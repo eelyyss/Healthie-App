@@ -30,7 +30,8 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

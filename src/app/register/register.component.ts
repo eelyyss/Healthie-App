@@ -27,40 +27,21 @@ export class RegisterComponent {
   constructor(private authService: AuthService) { }
 
   onSubmit(): void {
-    const {
-      username,
-      email,
-      password,
-      dob,
-      gender,
-      documentType,
-      documentNumber,
-      province,
-      city,
-      phoneNumber,
-      terms
-    } = this.form;
+    const { username, email, password, dob, gender, documentType, documentNumber, province, city, phoneNumber, terms } = this.form;
 
-    this.authService.register({
-      username,
-      email,
-      password,
-      dob,
-      gender,
-      documentType,
-      documentNumber,
-      province,
-      city,
-      phoneNumber,
-      terms
-    }).subscribe({
-      next: data => {
-        console.log(data);
+    this.authService.register(username, email, password, dob, gender, documentType, documentNumber, province, city, phoneNumber, terms).subscribe({
+      next: (data: any) => {
+        console.log('Registration successful:', data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },
-      error: err => {
-        this.errorMessage = err.error.message;
+      error: (err: any) => {
+        console.error('Registration error:', err);
+        if (err.status === 400 && err.error.message === 'Document number already exists') {
+          this.errorMessage = 'Document number already exists';
+        } else {
+          this.errorMessage = 'An error occurred during registration';
+        }
         this.isSignUpFailed = true;
       }
     });

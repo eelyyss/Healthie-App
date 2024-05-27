@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
@@ -9,7 +9,7 @@ import { EventBusService } from './_shared/event-bus.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private roles: string[] = [];
   isLoggedIn = false;
   showAdminBoard = false;
@@ -52,7 +52,7 @@ export class AppComponent {
       },
       error: err => {
         console.log(err);
-      }
-    });
-  }
+      }
+    });
+  }
 }
