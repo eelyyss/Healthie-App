@@ -25,13 +25,11 @@ app.use(
 );
 
 const db = require("./src/models");
-const Role = db.role;
 
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`)
   .then(() => {
     console.log("Successfully connected to MongoDB.");
-    initial();
   })
   .catch(err => {
     console.error("Connection error", err);
@@ -50,21 +48,3 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-async function initial() {
-  try {
-    const count = await Role.estimatedDocumentCount();
-    if (count === 0) {
-      await new Role({ name: "user" }).save();
-      console.log("added 'user' to roles collection");
-
-      await new Role({ name: "moderator" }).save();
-      console.log("added 'moderator' to roles collection");
-
-      await new Role({ name: "admin" }).save();
-      console.log("added 'admin' to roles collection");
-    }
-  } catch (err) {
-    console.error("error", err);
-  }
-}

@@ -12,7 +12,6 @@ const User = new mongoose.Schema({
   city: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   terms: { type: Boolean, required: true },
-  roles: { type: mongoose.Schema.Types.ObjectId, ref: "Role" }
 });
 
 module.exports = mongoose.model('User',User);

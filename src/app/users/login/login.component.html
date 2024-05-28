@@ -5,10 +5,9 @@
       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
       class="profile-img-card"
     />
-    @if (!isLoggedIn) {
     <form
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
+      (ngSubmit)="onSubmit()"
       #f="ngForm"
       novalidate
     >
@@ -21,11 +20,9 @@
           [(ngModel)]="form.username"
           required
           #username="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+          [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
         />
-        @if (username.errors && f.submitted) {
-        <div class="invalid-feedback">Username is required!</div>
-        }
+        <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">Username is required!</div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -37,32 +34,21 @@
           required
           minlength="6"
           #password="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
         />
-        @if (password.errors && f.submitted) {
-        <div class="invalid-feedback">
-          @if (password.errors['required']) {
-          <div>Password is required</div>
-          }
-          @if (password.errors['minlength']) {
-          <div>Password must be at least 6 characters</div>
-          }
+        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+          <div *ngIf="password.errors?.['required']">Password is required</div>
+          <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
         </div>
-        }
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Login</button>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
       </div>
       <div class="form-group">
-        @if (f.submitted && isLoginFailed) {
-        <div class="alert alert-danger" role="alert">
+        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
           Login failed: {{ errorMessage }}
         </div>
-        }
       </div>
     </form>
-    } @else {
-    <div class="alert alert-success">Logged in as {{ roles }}.</div>
-    }
-  </div>
+  </div>
 </div>

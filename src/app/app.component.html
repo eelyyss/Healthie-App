@@ -10,21 +10,6 @@
           <li class="nav-item">
             <a class="nav-link text-white" aria-current="page" href="/home" routerLink="home">Home</a>
           </li>
-          @if (showAdminBoard) {
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/admin" routerLink="admin">Admin Board</a>
-            </li>
-          }
-          @if (showModeratorBoard) {
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/mod" routerLink="mod">Moderator Board</a>
-            </li>
-          }
-          @if (isLoggedIn) {
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/user" routerLink="user">User</a>
-            </li>
-          }
         </ul>
         @if (!isLoggedIn) {
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
@@ -37,9 +22,6 @@
           </ul>
         } @else {
           <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/profile" routerLink="profile">{{ username }}</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="#" (click)="logout()">LogOut</a>
             </li>

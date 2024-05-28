@@ -1,0 +1,25 @@
+<div class="appointment-container">
+  <h2>Solicitud de Cita</h2>
+  <p>Tipo de cita seleccionado: {{ appointmentType }}</p>
+
+  <div class="calendar-container">
+    <mat-label>Selecciona una fecha</mat-label>
+    <div class="header-calendar">
+      <button (click)="changeMonth(-1)" class="btn-nav">Antes</button>
+      <h1>{{ dateSelect | date:'MMMM, yyyy' }}</h1>
+      <button (click)="changeMonth(1)" class="btn-nav">Siguiente</button>
+    </div>
+    <ol>
+      <li *ngFor="let day of week" class="day-name">{{ day | slice:0:3 }}</li>
+      <li (click)="clickDay(day)"
+          [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+          *ngFor="let day of monthSelect; let first = first">
+        <span>{{ day?.value }}</span>
+      </li>
+    </ol>
+  </div>
+<div>Fecha seleccionada: {{ dateValue | date }}</div>
+
+  <button mat-raised-button class="blue-button" style="border-radius: 20px; background-color: #007bff; color: white; width: 320px; height: 35px;">Buscar citas</button>
+
+  </div>

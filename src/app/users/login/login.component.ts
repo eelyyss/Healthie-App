@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
-import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../_services/auth.service';
+import { StorageService } from '../../_services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +16,13 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
-      this.roles = this.storageService.getUser().roles;
+      this.router.navigate(['/home']); // Redirigir al home si ya está logueado
     }
   }
 
@@ -35,17 +35,12 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.storageService.getUser().roles;
-        this.reloadPage();
+        this.router.navigate(['/home']); // Redirigir a la pantalla de home después de un login exitoso
       },
       error: err => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err.error.message || 'Login failed';
         this.isLoginFailed = true;
-      }
-    });
-  }
-
-  reloadPage(): void {
-    window.location.reload();
-  }
+      }
+    });
+  }
 }
