@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/home']); // Redirigir a la pantalla de home después de un login exitoso
+        this.router.navigate(['/home']);
       },
       error: err => {
         this.errorMessage = err.error.message || 'Login failed';

@@ -10,12 +10,8 @@ import { EventBusService } from './_shared/event-bus.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
   username?: string;
-
   eventBusSub?: Subscription;
 
   constructor(
@@ -29,11 +25,6 @@ export class AppComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
       this.username = user.username;
     }
 
@@ -47,7 +38,7 @@ export class AppComponent implements OnInit {
       next: res => {
         console.log(res);
         this.storageService.clean();
-
+        this.isLoggedIn = false;
         window.location.reload();
       },
       error: err => {

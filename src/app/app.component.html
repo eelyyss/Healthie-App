@@ -11,22 +11,43 @@
             <a class="nav-link text-white" aria-current="page" href="/home" routerLink="home">Home</a>
           </li>
         </ul>
-        @if (!isLoggedIn) {
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link text-white" routerLink="/signup">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" routerLink="login">Login</a>
-            </li>
-          </ul>
-        } @else {
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#" (click)="logout()">LogOut</a>
-            </li>
-          </ul>
-        }
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/login">Login</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="citasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Citas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="citasDropdown">
+              <li><a class="dropdown-item" routerLink="/pedir-cita">Pedir cita</a></li>
+              <li><a class="dropdown-item" routerLink="/modificar-citas">Modificar citas</a></li>
+              <li><a class="dropdown-item" routerLink="/visualizar-citas">Visualizar citas</a></li>
+              <li><a class="dropdown-item" routerLink="/cancelar-citas">Cancelar citas</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="medicacionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Medicación
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="medicacionDropdown">
+              <li><a class="dropdown-item" routerLink="/nueva-medicacion">Nueva medicación</a></li>
+              <li><a class="dropdown-item" routerLink="/ver-medicacion">Ver medicación</a></li>
+              <li><a class="dropdown-item" routerLink="/editar-medicacion">Editar medicación</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/resultados">Resultados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

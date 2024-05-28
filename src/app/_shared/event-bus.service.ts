@@ -17,5 +17,5 @@ export class EventBusService {
     return this.subject$.pipe(
       filter((e: EventData) => e.name === eventName),
       map((e: EventData) => e["value"])).subscribe(action);
-  }
+  }
 }

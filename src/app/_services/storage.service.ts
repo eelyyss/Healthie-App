@@ -28,6 +28,10 @@ export class StorageService {
 
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);
-    return !!user;
+    return !!user;
+  }
+
+  signout(): void {
+    window.sessionStorage.clear();
   }
 }

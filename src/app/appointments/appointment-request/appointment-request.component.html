@@ -3,7 +3,8 @@
   <p>Tipo de cita seleccionado: {{ appointmentType }}</p>
 
   <div class="calendar-container">
-    <mat-label>Selecciona una fecha</mat-label>
+    <mat-label >Selecciona una fecha:  {{ dateValue | date }}</mat-label>
+    <p></p>
     <div class="header-calendar">
       <button (click)="changeMonth(-1)" class="btn-nav">Antes</button>
       <h1>{{ dateSelect | date:'MMMM, yyyy' }}</h1>
@@ -18,8 +19,6 @@
       </li>
     </ol>
   </div>
-<div>Fecha seleccionada: {{ dateValue | date }}</div>
-
   <button mat-raised-button class="blue-button" style="border-radius: 20px; background-color: #007bff; color: white; width: 320px; height: 35px;">Buscar citas</button>
 
   </div>
