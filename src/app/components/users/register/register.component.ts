@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../_services/auth.service';
+import { AuthService } from '../../../_services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +34,15 @@ export class RegisterComponent {
         console.log('Registration successful:', data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        // Después de registrar al usuario, generas aleatoriamente tres medicamentos y los guardas en el servidor
+        this.authService.generateMedications(data.id).subscribe({
+          next: () => {
+            console.log('Medications generated successfully');
+          },
+          error: (err: any) => {
+            console.error('Error generating medications:', err);
+          }
+        });
       },
       error: (err: any) => {
         console.error('Registration error:', err);

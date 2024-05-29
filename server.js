@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
-const dbConfig = require("./src/config/db.config");
+const dbConfig = require("./src/backend/config/db.config");
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-const db = require("./src/models");
+const db = require("./src/backend/models");
 
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`)
@@ -41,8 +41,8 @@ app.get("/", (req, res) => {
 });
 
 // Registrar las rutas
-require("./src/routes/auth.routes")(app);
-require("./src/routes/user.routes")(app);
+require("./src/backend/routes/auth.routes")(app);
+require("./src/backend/routes/user.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

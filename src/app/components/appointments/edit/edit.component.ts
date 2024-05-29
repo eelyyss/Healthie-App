@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppointmentsService } from '../../_services/appointments.service';
+import { AppointmentsService } from '../../../_services/appointments.service';
 
 @Component({
   selector: 'app-edit-appointment',

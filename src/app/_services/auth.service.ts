@@ -1,3 +1,4 @@
+// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -45,6 +46,21 @@ export class AuthService {
       },
       httpOptions
     );
+  }
+
+  // Método para generar medicamentos aleatorios y guardarlos en el servidor
+  generateMedications(userId: number): Observable<any> {
+    const medications = [
+      { userId: userId, name: 'Ibuprofeno', dosage: '600mg', frequency: 'Cada 8 horas' },
+      { userId: userId, name: 'Paracetamol', dosage: '1000mg', frequency: 'Cada mañana' },
+      { userId: userId, name: 'Nolotil', dosage: '575mg', frequency: 'Antes de dormir' }
+    ];
+
+    return this.http.post(AUTH_API + 'saveMedications', medications, httpOptions);
+  }
+
+  getMedications(userId: number): Observable<any> {
+    return this.http.get(AUTH_API + `medications/${userId}`, httpOptions);
   }
 
   login(username: string, password: string): Observable<any> {

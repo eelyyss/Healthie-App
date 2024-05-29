@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +41,7 @@ export class AppComponent implements OnInit {
         console.log(res);
         this.storageService.clean();
         this.isLoggedIn = false;
-        window.location.reload();
+        this.router.navigate(['/home']); // Redirige al usuario a la página de inicio
       },
       error: err => {
         console.log(err);

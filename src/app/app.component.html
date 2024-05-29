@@ -1,5 +1,5 @@
 <div id="app">
-  <nav class="navbar navbar-expand-lg" style="background-color: #007bff; font-family: 'Poppins', sans-serif;">
+  <nav class="navbar navbar-expand-lg" style="background-color: darkslategrey; font-family: 'Poppins', sans-serif;">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">HealthIE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" href="/home" routerLink="home">Home</a>
+            <a class="nav-link text-white" aria-current="page" routerLink="/home">Home</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="!isLoggedIn">
@@ -20,26 +20,11 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="citasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Citas
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="citasDropdown">
-              <li><a class="dropdown-item" routerLink="/pedir-cita">Pedir cita</a></li>
-              <li><a class="dropdown-item" routerLink="/modificar-citas">Modificar citas</a></li>
-              <li><a class="dropdown-item" routerLink="/visualizar-citas">Visualizar citas</a></li>
-              <li><a class="dropdown-item" routerLink="/cancelar-citas">Cancelar citas</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/appointments/create">Citas</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="medicacionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Medicación
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="medicacionDropdown">
-              <li><a class="dropdown-item" routerLink="/nueva-medicacion">Nueva medicación</a></li>
-              <li><a class="dropdown-item" routerLink="/ver-medicacion">Ver medicación</a></li>
-              <li><a class="dropdown-item" routerLink="/editar-medicacion">Editar medicación</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/medicaments">Medicación</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" routerLink="/resultados">Resultados</a>

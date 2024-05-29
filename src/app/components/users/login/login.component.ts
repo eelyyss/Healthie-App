@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../_services/auth.service';
-import { StorageService } from '../../_services/storage.service';
-
+import { AuthService } from '../../../_services/auth.service';
+import { StorageService } from '../../../_services/storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,12 +16,16 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private storageService: StorageService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
-      this.router.navigate(['/home']); // Redirigir al home si ya está logueado
+      this.router.navigate(['http://localhost:3000/home']);
     }
   }
 

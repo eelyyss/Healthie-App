@@ -1,0 +1,12 @@
+<div class="medications-container">
+  <h2>Mis Medicamentos</h2>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="medicamentos.length === 0" class="alert alert-info">No hay medicamentos asignados.</div>
+  <div *ngIf="medicamentos.length > 0" class="medications-list">
+    <div *ngFor="let medicamento of medicamentos" class="medication-item">
+      <h3>{{ medicamento.name }}</h3>
+      <p><strong>Dosis:</strong> {{ medicamento.dosage }}</p>
+      <p><strong>Frecuencia:</strong> {{ medicamento.frequency }}</p>
+    </div>
+  </div>
+</div>
