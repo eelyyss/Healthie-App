@@ -20,7 +20,8 @@ import { EditComponent } from './components/appointments/edit/edit.component';
 import { ViewComponent } from './components/appointments/view/view.component';
 import { ListComponent } from './components/appointments/list/list.component';
 import { AppointmentRequestComponent } from './components/appointments/appointment-request/appointment-request.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TimeComponent } from './components/appointments/time/time.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,9 @@ import { AppointmentRequestComponent } from './components/appointments/appointme
     ViewComponent,
     EditComponent,
     ListComponent,
-    AppointmentRequestComponent
+    AppointmentRequestComponent,
+    TimeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { AppointmentRequestComponent } from './components/appointments/appointme
     MatInputModule,
     MatButtonModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     NgxMaterialTimepickerModule,
   ],
   providers: [

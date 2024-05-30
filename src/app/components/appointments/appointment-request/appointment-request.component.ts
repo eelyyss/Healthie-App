@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 
 @Component({
@@ -9,24 +9,28 @@ import moment from 'moment';
 })
 export class AppointmentRequestComponent implements OnInit {
   appointmentType: string | null = null;
+  dateValue: any = null;
+  availableHours: string[] = [];
+  today: any = moment().startOf('day');
+  selectedHours: string[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.appointmentType = params['type'];
     });
     this.getDaysFromDate(moment().month() + 1, moment().year());
+    this.generateAvailableHours(); // Llama al método para generar las horas disponibles
   }
 
   week: any = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 
   monthSelect: any[] = [];
   dateSelect: any;
-  dateValue: any;
 
   getDaysFromDate(month: number, year: number) {
-    const startDate = moment.utc(`${year}/${month}/01`);
+    const startDate = moment(`${year}-${month}-01`);
     const endDate = startDate.clone().endOf('month');
     this.dateSelect = startDate;
 
@@ -40,6 +44,7 @@ export class AppointmentRequestComponent implements OnInit {
         name: dayObject.format('dddd'),
         value: a,
         indexWeek: dayObject.isoWeekday(),
+        isPast: dayObject.isBefore(this.today, 'day'),
       };
     });
 
@@ -57,9 +62,29 @@ export class AppointmentRequestComponent implements OnInit {
   }
 
   clickDay(day: any) {
+    if (day.isPast) {
+      return;
+    }
     const monthYear = this.dateSelect.format('YYYY-MM');
     const parse = `${monthYear}-${day.value}`;
     const objectDate = moment(parse);
     this.dateValue = objectDate;
+  }
+
+  navigateToTime() {
+    if (!this.dateValue || this.dateValue.isBefore(this.today, 'day')) {
+      alert('Por favor, selecciona una fecha válida.');
+      return;
+    }
+    console.log('Navegando a la selección de hora con la fecha:', this.dateValue.format('YYYY-MM-DD'));
+    this.router.navigate(['appointments/time'], { state: { date: this.dateValue.format('YYYY-MM-DD'), availableHours: this.availableHours } });
+  }
+
+  generateAvailableHours(): void {
+    // Generar las horas disponibles de 8am a 8pm
+    for (let i = 8; i <= 19; i++) {
+      const hour = i < 10 ? `0${i}:00` : `${i}:00`;
+      this.availableHours.push(hour);
+    }
   }
 }

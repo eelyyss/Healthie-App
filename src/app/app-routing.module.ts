@@ -10,6 +10,7 @@ import { EditComponent } from './components/appointments/edit/edit.component';
 import { ListComponent } from './components/appointments/list/list.component';
 import { AppointmentRequestComponent } from './components/appointments/appointment-request/appointment-request.component';
 import { MedicamentsComponent } from './components/medicaments/medicaments.component';
+import { TimeComponent } from './components/appointments/time/time.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'appointments/list', component: ListComponent },
   { path: 'appointment-request/:type', component: AppointmentRequestComponent },
   { path: 'medicaments', component: MedicamentsComponent},
+  { path: 'appointments/time', component: TimeComponent},
+
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

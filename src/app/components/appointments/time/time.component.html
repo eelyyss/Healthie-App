@@ -1,0 +1,24 @@
+<div class="app">
+  <div class="time-selector-container">
+    <h2>Selecciona una hora para {{ date | date : "dd/MM/yyyy" }}</h2>
+    <div
+      class="time-slot"
+      *ngFor="let hour of availableHours"
+      [ngClass]="{ selected: selectedHour === hour }"
+      (click)="selectHour(hour)"
+    >
+      {{ hour }}
+    </div>
+    <button class="confirm-button" (click)="confirmAppointment()">
+      Confirmar cita
+    </button>
+    <div class="button-pt2" *ngIf="showConfirmationMessage">
+      <button routerLink="/appointments/list" class="view-appointments-button">
+        Visualizar citas
+      </button>
+    </div>
+    <div class="message" *ngIf="showConfirmationMessage">
+      Se ha registrado la cita.
+    </div>
+  </div>
+</div>
