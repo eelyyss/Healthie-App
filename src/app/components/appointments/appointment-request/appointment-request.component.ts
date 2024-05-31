@@ -81,7 +81,6 @@ export class AppointmentRequestComponent implements OnInit {
   }
 
   generateAvailableHours(): void {
-    // Generar las horas disponibles de 8am a 8pm
     for (let i = 8; i <= 19; i++) {
       const hour = i < 10 ? `0${i}:00` : `${i}:00`;
       this.availableHours.push(hour);

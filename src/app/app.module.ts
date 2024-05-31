@@ -16,12 +16,11 @@ import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateComponent } from './components/appointments/create/create.component';
-import { EditComponent } from './components/appointments/edit/edit.component';
-import { ViewComponent } from './components/appointments/view/view.component';
 import { ListComponent } from './components/appointments/list/list.component';
 import { AppointmentRequestComponent } from './components/appointments/appointment-request/appointment-request.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TimeComponent } from './components/appointments/time/time.component';
+import { MedicamentsComponent } from './components/medicaments/medicaments.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +28,10 @@ import { TimeComponent } from './components/appointments/time/time.component';
     RegisterComponent,
     HomeComponent,
     CreateComponent,
-    ViewComponent,
-    EditComponent,
     ListComponent,
     AppointmentRequestComponent,
     TimeComponent,
-
+    MedicamentsComponent
   ],
   imports: [
     BrowserModule,
