@@ -20,7 +20,7 @@ import { ListComponent } from './components/appointments/list/list.component';
 import { AppointmentRequestComponent } from './components/appointments/appointment-request/appointment-request.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TimeComponent } from './components/appointments/time/time.component';
-import { MedicamentsComponent } from './components/medicaments/medicaments.component';
+import { MedicationComponent } from './components/medicaments/medication.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +31,7 @@ import { MedicamentsComponent } from './components/medicaments/medicaments.compo
     ListComponent,
     AppointmentRequestComponent,
     TimeComponent,
-    MedicamentsComponent
+    MedicationComponent
   ],
   imports: [
     BrowserModule,
