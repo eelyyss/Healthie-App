@@ -21,6 +21,7 @@ import { AppointmentRequestComponent } from './components/appointments/appointme
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TimeComponent } from './components/appointments/time/time.component';
 import { MedicationComponent } from './components/medicaments/medication.component';
+import { ResultsComponent } from './components/results/results.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { MedicationComponent } from './components/medicaments/medication.compone
     ListComponent,
     AppointmentRequestComponent,
     TimeComponent,
-    MedicationComponent
+    MedicationComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

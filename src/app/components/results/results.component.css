@@ -1,0 +1,49 @@
+.results-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.results-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.no-results {
+  text-align: center;
+  color: #666;
+}
+
+.result-card {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.result-card h3 {
+  margin-top: 0;
+}
+
+.result-card p {
+  margin: 5px 0;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+}

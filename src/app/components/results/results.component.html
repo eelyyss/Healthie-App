@@ -1,0 +1,13 @@
+<div class="results-container">
+  <h2>Resultados Clínicos</h2>
+  <div *ngIf="results.length === 0" class="no-results">
+    No hay resultados disponibles.
+  </div>
+  <div *ngFor="let result of results; let i = index" class="result-card">
+    <h3>{{ result.title }}</h3>
+    <p><strong>Fecha:</strong> {{ result.date | date: 'fullDate' }}</p>
+    <p><strong>Descripción:</strong> {{ result.description }}</p>
+    <p><strong>Valores:</strong> {{ result.values }}</p>
+    <button (click)="deleteResult(i)" class="btn-delete">Eliminar</button>
+  </div>
+</div>
