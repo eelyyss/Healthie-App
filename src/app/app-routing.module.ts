@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
   { path: 'appointments/create', component: CreateComponent },
-  { path: 'appointments/list', component: ListComponent },
+  { path: 'appointments/list/:type', component: ListComponent },
   { path: 'appointment-request/:type', component: AppointmentRequestComponent },
   { path: 'medicaments', component: MedicamentsComponent},
   { path: 'appointments/time', component: TimeComponent},

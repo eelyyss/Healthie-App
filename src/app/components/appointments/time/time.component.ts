@@ -8,6 +8,7 @@ import { AppointmentService } from '../../../_services/appointment.service';
   styleUrls: ['./time.component.css']
 })
 export class TimeComponent implements OnInit {
+  appointmentType: string | null = null;
   date: string = '';
   availableHours: string[] = [];
   selectedHour: string | null = null;
@@ -17,6 +18,15 @@ export class TimeComponent implements OnInit {
 
   ngOnInit(): void {
     const navigation = window.history.state;
+
+    if (navigation && navigation.type) {
+      this.appointmentType = navigation.type;
+    } else {
+      console.error('Invalid navigation state', navigation);
+      this.router.navigate(['/']);
+      return;
+    }
+
     if (navigation && navigation.date && navigation.availableHours) {
       this.date = navigation.date.toString();
       this.availableHours = navigation.availableHours.filter((hour: string) => this.appointmentService.isHourAvailable(this.date, hour));
@@ -32,14 +42,20 @@ export class TimeComponent implements OnInit {
 
   confirmAppointment() {
     if (this.selectedHour) {
-      const appointment = { date: this.date, hour: this.selectedHour, type: window.history.state.type };
+      const appointment = { date: this.date, hour: this.selectedHour, type: this.appointmentType };
       this.appointmentService.addAppointment(appointment);
       this.availableHours = this.availableHours.filter(h => h !== this.selectedHour);
       this.showConfirmationMessage = true;
-
-      this.router.navigate(['/appointments/list']);
     } else {
       alert('Por favor, selecciona una hora.');
+    }
+  }
+
+  navigateToList() {
+    if (this.appointmentType) {
+      this.router.navigate(['/appointments/list', this.appointmentType]);
+    } else {
+      console.error('appointmentType is null');
     }
   }
 }

@@ -21,7 +21,7 @@ export class AppointmentRequestComponent implements OnInit {
       this.appointmentType = params['type'];
     });
     this.getDaysFromDate(moment().month() + 1, moment().year());
-    this.generateAvailableHours(); // Llama al método para generar las horas disponibles
+    this.generateAvailableHours();
   }
 
   week: any = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
@@ -76,8 +76,13 @@ export class AppointmentRequestComponent implements OnInit {
       alert('Por favor, selecciona una fecha válida.');
       return;
     }
-    console.log('Navegando a la selección de hora con la fecha:', this.dateValue.format('YYYY-MM-DD'));
-    this.router.navigate(['appointments/time'], { state: { date: this.dateValue.format('YYYY-MM-DD'), availableHours: this.availableHours } });
+    this.router.navigate(['appointments/time'], {
+      state: {
+        date: this.dateValue.format('YYYY-MM-DD'),
+        availableHours: this.availableHours,
+        type: this.appointmentType
+      }
+    });
   }
 
   generateAvailableHours(): void {

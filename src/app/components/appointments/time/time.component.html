@@ -13,7 +13,7 @@
       Confirmar cita
     </button>
     <div class="button-pt2" *ngIf="showConfirmationMessage">
-      <button routerLink="/appointments/list" class="view-appointments-button">
+      <button (click)="navigateToList()" class="view-appointments-button">
         Visualizar citas
       </button>
     </div>

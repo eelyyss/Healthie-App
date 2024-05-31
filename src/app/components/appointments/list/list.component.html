@@ -1,19 +1,26 @@
-<div class="container">
-  <h2>Mis Citas</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Tipo de Cita</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let appointment of appointments">
-        <td>{{ appointment.type }}</td>
-        <td>{{ appointment.date | date:'fullDate' }}</td>
-        <td>{{ appointment.hour }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="appointments-list">
+  <h2>Lista de Citas</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo de Cita</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointments; let i = index">
+          <td>{{ appointment.type }}</td>
+          <td>{{ appointment.date | date: 'fullDate' }}</td>
+          <td>{{ appointment.hour }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="buttons-container">
+      <button *ngFor="let appointment of appointments" class="btn-delete" (click)="deleteAppointment(appointment)">
+        ELIMINAR
+      </button>
+    </div>
+  </div>
 </div>

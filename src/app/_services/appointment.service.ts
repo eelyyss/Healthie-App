@@ -21,6 +21,11 @@ export class AppointmentService {
 
   isHourAvailable(date: string, hour: string): boolean {
     const appointments = this.getAppointments();
-    return !appointments.some(app => app.date === date && app.hour === hour);
+    return !appointments.some(app => app.date === date && app.hour === hour);
+  }
+
+  deleteAppointment(appointment: any): void {
+    const appointments = this.getAppointments().filter(app => !(app.date === appointment.date && app.hour === appointment.hour));
+    localStorage.setItem(this.localStorageKey, JSON.stringify(appointments));
   }
 }
