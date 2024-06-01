@@ -9,16 +9,19 @@
     >
       {{ hour }}
     </div>
-    <button class="confirm-button" (click)="confirmAppointment()">
-      Confirmar cita
-    </button>
-    <div class="button-pt2" *ngIf="showConfirmationMessage">
-      <button (click)="navigateToList()" class="view-appointments-button">
-        Visualizar citas
+    <div>
+      <button class="confirm-button" (click)="confirmAppointment()">
+        Confirmar cita
       </button>
+      <div class="button-pt2" *ngIf="showConfirmationMessage">
+        <button (click)="navigateToList()" class="view-appointments-button">
+          Visualizar citas
+        </button>
+      </div>
+      <div class="message" *ngIf="showConfirmationMessage">
+        Se ha registrado la cita.
+      </div>
     </div>
-    <div class="message" *ngIf="showConfirmationMessage">
-      Se ha registrado la cita.
-    </div>
-  </div>
+      
+  </div>
 </div>
