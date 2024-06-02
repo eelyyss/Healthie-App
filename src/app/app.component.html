@@ -1,36 +1,37 @@
 <div id="app">
-  <nav class="navbar navbar-expand-lg" style="background-color: darkslategrey; font-family: 'Poppins', sans-serif;">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand text-white" href="#">HealthIE</a>
+      <img src="assets/logoHealthie.png" class="navbar-logo">
+      <a class="navbar-brand" href="#">HealthIE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" routerLink="/home">Home</a>
+            <a class="nav-link" aria-current="page" routerLink="/home">Home</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="!isLoggedIn">
+        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/signup">Sign Up</a>
+            <a class="nav-link" routerLink="/signup">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/login">Login</a>
+            <a class="nav-link" routerLink="/login">Login</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/appointments/create">Citas</a>
+            <a class="nav-link" routerLink="/appointments/create">Citas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/medicaments">Medicación</a>
+            <a class="nav-link" routerLink="/medicaments">Medicación</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/results">Resultados</a>
+            <a class="nav-link" routerLink="/results">Resultados</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#" (click)="logout()">LogOut</a>
+            <a class="nav-link" href="#" (click)="logout()">LogOut</a>
           </li>
         </ul>
       </div>
@@ -39,5 +40,5 @@
 
   <div class="container">
     <router-outlet></router-outlet>
-  </div>
+  </div>
 </div>
