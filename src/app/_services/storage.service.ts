@@ -31,6 +31,6 @@ export class StorageService {
   }
 
   signout(): void {
-    window.sessionStorage.clear();
+    window.sessionStorage.removeItem(USER_KEY);
   }
 }

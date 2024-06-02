@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,12 @@ export class MedicationService {
     { name: 'Ciprofloxacina', duration: '7 días', dose: '500 mg' }
   ];
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
+
+  private getUserMedicationsKey(): string {
+    const user = this.storageService.getUser();
+    return user ? `medications_${user.username}` : 'medications';
+  }
 
   private getRandomMedications(count: number): any[] {
     const shuffled = this.medicationsList.sort(() => 0.5 - Math.random());
@@ -46,15 +52,14 @@ export class MedicationService {
   }
 
   getMedications(): any[] {
-    const medications = localStorage.getItem(this.localStorageKey);
+    const medicationsKey = this.getUserMedicationsKey();
+    const medications = localStorage.getItem(medicationsKey);
     if (medications) {
       return JSON.parse(medications);
     } else {
       const newMedications = this.getRandomMedications(5);
-      localStorage.setItem(this.localStorageKey, JSON.stringify(newMedications));
+      localStorage.setItem(medicationsKey, JSON.stringify(newMedications));
       return newMedications;
-    }
-  }
-
-
+    }
+  }
 }

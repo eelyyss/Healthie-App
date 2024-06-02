@@ -1,13 +1,22 @@
-<div class="results-container">
+<div class="results-container mt-5">
   <h2>Resultados Clínicos</h2>
-  <div *ngIf="results.length === 0" class="no-results">
-    No hay resultados disponibles.
+  <div class="tabs">
+    <button *ngFor="let tab of tabs; let i = index" [class.active]="selectedTab === i" (click)="selectedTab = i">
+      {{ tab }}
+    </button>
   </div>
-  <div *ngFor="let result of results; let i = index" class="result-card">
-    <h3>{{ result.title }}</h3>
-    <p><strong>Fecha:</strong> {{ result.date | date: 'fullDate' }}</p>
-    <p><strong>Descripción:</strong> {{ result.description }}</p>
-    <p><strong>Valores:</strong> {{ result.values }}</p>
-    <button (click)="deleteResult(i)" class="btn-delete">Eliminar</button>
+  <div *ngIf="results.length === 0" class="no-results">
+    <p>No hay resultados clínicos</p>
+  </div>
+  <div *ngIf="results.length > 0" class="results-list">
+    <div *ngFor="let result of filterResults(selectedTab)" class="result-card">
+      <div class="result-header">
+        <h3>{{ result.title }} - {{ result.date | date }}</h3>
+      </div>
+      <div>
+        <p><strong>Causa:</strong> {{ result.description }}</p>
+        <p><strong>Resultados:</strong> {{ result.values }}</p>
+      </div>
+    </div>
   </div>
 </div>

@@ -2,48 +2,92 @@
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .results-container h2 {
   text-align: center;
   color: #333;
   margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
 .no-results {
   text-align: center;
   color: #666;
+  font-size: 1.2em;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 1em;
+}
+
+.tabs button.active {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+.tabs button:hover {
+  background-color: #0056b3;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .result-card {
+  width: 100%;
+  max-width: 700px;
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.result-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .result-card h3 {
   margin-top: 0;
+  font-size: 1.5em;
 }
 
 .result-card p {
   margin: 5px 0;
+  font-size: 1em;
+  color: #555;
 }
 
-.btn-delete {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.btn-delete:hover {
-  background-color: #d32f2f;
+.hidden {
+  display: none;
 }
