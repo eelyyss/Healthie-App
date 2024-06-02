@@ -35,6 +35,10 @@ export class AppComponent implements OnInit {
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
+
+    this.authService.getLoginSubject().subscribe(() => {
+      this.isLoggedIn = true;
+    });
   }
 
   logout(): void {

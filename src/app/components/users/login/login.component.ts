@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../_services/auth.service';
 import { StorageService } from '../../../_services/storage.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,13 +20,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }
   }
 
@@ -38,12 +40,13 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/home']);
+        this.changeDetectorRef.detectChanges();
+        this.router.navigate(['/']);
       },
       error: err => {
         this.errorMessage = err.error.message || 'Login failed';
-        this.isLoginFailed = true;
-      }
-    });
+        this.isLoginFailed = true;
+      }
+    });
   }
 }
