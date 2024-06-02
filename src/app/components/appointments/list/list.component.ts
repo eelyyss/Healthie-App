@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
-import { AppointmentService } from "../../../_services/appointment.service";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { AppointmentService } from '../../../_services/appointment.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',

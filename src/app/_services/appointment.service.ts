@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
-  private localStorageKey = 'appointments';
+  constructor(private storageService: StorageService) {}
 
-  constructor() { }
+  private getUserAppointmentsKey(): string {
+    const user = this.storageService.getUser();
+    return user ? `appointments_${user.username}` : 'appointments';
+  }
 
   addAppointment(appointment: any) {
     const appointments = this.getAppointments();
     appointments.push(appointment);
-    localStorage.setItem(this.localStorageKey, JSON.stringify(appointments));
+    localStorage.setItem(this.getUserAppointmentsKey(), JSON.stringify(appointments));
   }
 
   getAppointments(): any[] {
-    const appointments = localStorage.getItem(this.localStorageKey);
+    const appointments = localStorage.getItem(this.getUserAppointmentsKey());
     return appointments ? JSON.parse(appointments) : [];
   }
 
@@ -26,6 +30,6 @@ export class AppointmentService {
 
   deleteAppointment(appointment: any): void {
     const appointments = this.getAppointments().filter(app => !(app.date === appointment.date && app.hour === appointment.hour));
-    localStorage.setItem(this.localStorageKey, JSON.stringify(appointments));
+    localStorage.setItem(this.getUserAppointmentsKey(), JSON.stringify(appointments));
   }
 }
