@@ -14,8 +14,8 @@ El frontend de la aplicación se desarrolla con Angular, un framework versátil 
 Para el lado del servidor, se emplea Node.js junto con Express.js para estructurar la lógica del servidor de manera sencilla y eficiente. Todo el código del backend está escrito en JavaScript, aprovechando la flexibilidad y el dinamismo de este lenguaje para el desarrollo rápido y eficiente. La base de datos utilizada es MongoDB, una base de datos NoSQL altamente escalable y flexible, ideal para manejar grandes volúmenes de datos.
 
   - Herramientas y Entorno de Desarrollo
-Visual Studio Code: Se utiliza como editor de código principal, ofreciendo un entorno integrado que mejora la productividad del desarrollador con características como la depuración en tiempo real y el resaltado de sintaxis.
+    1. Visual Studio Code: Se utiliza como editor de código principal, ofreciendo un entorno integrado que mejora la productividad del desarrollador con características como la depuración en tiempo real y el resaltado de sintaxis.
 
-Angular CLI: La línea de comandos de Angular (CLI) agiliza el desarrollo del proyecto mediante la generación automática de componentes, servicios y módulos.
+    2. Angular CLI: La línea de comandos de Angular (CLI) agiliza el desarrollo del proyecto mediante la generación automática de componentes, servicios y módulos.
 
-GitHub: Para el control de versiones y la gestión del código fuente, se utiliza GitHub, que facilita la colaboración y la documentación de mejoras en el proyecto.
+    3. GitHub: Para el control de versiones y la gestión del código fuente, se utiliza GitHub, que facilita la colaboración y la documentación de mejoras en el proyecto.
