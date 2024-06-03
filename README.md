@@ -5,7 +5,7 @@ Este proyecto, HealthIE, tiene como objetivo principal desarrollar una aplicaci�
 # Iniciar la app
 Para iniciar la aplicación, ejecuta el comando npm run start:all en tu terminal y luego abre localhost:3000 en tu navegador.
 
-#Tecnologías
+# Tecnologías
 
   - Frontend:
 El frontend de la aplicación se desarrolla con Angular, un framework versátil que permite crear aplicaciones web con una arquitectura bien estructurada. Se utiliza HTML para la estructura del contenido, CSS para el diseño y estilo visual, y TypeScript como lenguaje principal. TypeScript proporciona un sistema de tipos estático que mejora la calidad y mantenibilidad del código.
