@@ -1,19 +1,15 @@
 const { verifySignUp } = require("../middlewares");
 const controller = require("../controllers/auth.controller");
+const cors = require("cors");
 
 module.exports = function(app) {
-  app.use(function(req, res, next) {
-    res.header(
-      "Access-Control-Allow-Origin",
-      "http://localhost:3000, https://healthie-six.vercel.app"
-    );
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, Content-Type, Accept"
-    );
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-  });
+  const corsOptions = {
+    origin: ['http://localhost:3000', 'https://healthie-six.vercel.app'],
+    credentials: true,
+    optionsSuccessStatus: 200
+  };
+
+  app.use(cors(corsOptions));
 
   app.post(
     "/api/auth/signup",
