@@ -9,7 +9,7 @@ const app = express();
 
 // Configuración de CORS
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://healthie-six.vercel.app'], // Permitir localhost y el dominio desplegado
+  origin: ['http://localhost:3000', 'https://healthie-six.vercel.app'],
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -39,8 +39,17 @@ db.mongoose
     process.exit();
   });
 
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to HealthIE application." });
+app.use(function(req, res, next) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "http://localhost:3000, https://healthie-six.vercel.app"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
 });
 
 // Registrar las rutas
@@ -51,7 +60,7 @@ require("./src/backend/routes/user.routes")(app);
 app.use(express.static(path.join(__dirname, 'dist/healthie-app')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/healthie-app/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/healthie-app/browser/index.html'));
 });
 
 const PORT = process.env.PORT || 8080;
