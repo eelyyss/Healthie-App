@@ -9,8 +9,9 @@ const app = express();
 
 // Configuración de CORS
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://healthie-six.vercel.app'], // Permite localhost y el dominio desplegado
-  credentials: true
+  origin: ['http://localhost:3000', 'https://healthie-six.vercel.app'],
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
