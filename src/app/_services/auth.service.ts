@@ -49,20 +49,7 @@ export class AuthService {
     );
   }
 
-  // Método para generar medicamentos aleatorios y guardarlos en el servidor
-  generateMedications(userId: number): Observable<any> {
-    const medications = [
-      { userId: userId, name: 'Ibuprofeno', dosage: '600mg', frequency: 'Cada 8 horas' },
-      { userId: userId, name: 'Paracetamol', dosage: '1000mg', frequency: 'Cada mañana' },
-      { userId: userId, name: 'Nolotil', dosage: '575mg', frequency: 'Antes de dormir' }
-    ];
 
-    return this.http.post(AUTH_API + 'saveMedications', medications, httpOptions);
-  }
-
-  getMedications(userId: number): Observable<any> {
-    return this.http.get(AUTH_API + `medications/${userId}`, httpOptions);
-  }
   getLoginSubject(): Observable<void> {
     return this.loginSubject.asObservable();
   }
