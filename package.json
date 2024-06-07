@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 3000",
-    "build": "ng build --configuration production",
+    "build": "ng build --configuration production --output-path ../dist/healthie-app",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:server": "node server.js",
+    "postinstall": "ngcc --properties es2015 browser module main",
     "start:db": "mongod",
     "start:frontend": "ng serve --port 3000",
     "start:backend": "node server.js",

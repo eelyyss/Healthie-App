@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieSession = require("cookie-session");
@@ -8,7 +9,7 @@ const app = express();
 
 // Configuración de CORS
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: '*',
   credentials: true
 };
 
@@ -44,7 +45,15 @@ app.get("/", (req, res) => {
 require("./src/backend/routes/auth.routes")(app);
 require("./src/backend/routes/user.routes")(app);
 
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, 'dist/healthie-app')));
+
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/healthie-app/index.html'));
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`);
 });
