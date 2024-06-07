@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Origin",
-      "http://localhost:3000"
+      "http://localhost:3000, https://healthie-six.vercel.app"
     );
     res.header(
       "Access-Control-Allow-Headers",
@@ -25,3 +25,4 @@ module.exports = function(app) {
 
   app.post("/api/auth/signout", controller.signout);
 };
+

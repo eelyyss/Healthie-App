@@ -9,7 +9,7 @@ const app = express();
 
 // Configuración de CORS
 const corsOptions = {
-  origin: '*',
+  origin: ['http://localhost:3000', 'https://healthie-six.vercel.app'], // Permite localhost y el dominio desplegado
   credentials: true
 };
 
@@ -50,7 +50,7 @@ require("./src/backend/routes/user.routes")(app);
 app.use(express.static(path.join(__dirname, 'dist/healthie-app')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/healthie-app/browser/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/healthie-app/index.html'));
 });
 
 const PORT = process.env.PORT || 8080;
