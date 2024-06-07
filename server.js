@@ -20,15 +20,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cookieSession({
     name: "healthie-session",
-    keys: ["COOKIE_SECRET"],
+    keys: [process.env.COOKIE_SECRET || "default_cookie_secret"],
     httpOnly: true
   })
 );
 
 const db = require("./src/backend/models");
 
+const mongoUri = `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`;
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`)
+  .connect(mongoUri)
   .then(() => {
     console.log("Successfully connected to MongoDB.");
   })
@@ -48,9 +49,8 @@ require("./src/backend/routes/user.routes")(app);
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, 'dist/healthie-app')));
 
-
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/healthie-app/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/healthie-app/browser/index.html'));
 });
 
 const PORT = process.env.PORT || 8080;
