@@ -8,6 +8,10 @@ import { UserService } from '../../_services/user.service';
 })
 export class HomeComponent implements OnInit {
   content?: string;
+  name: string = '';
+  email: string = '';
+  message: string = '';
+
 
   constructor(private userService: UserService) { }
 
@@ -30,4 +34,17 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  onSubmit(): void {
+    this.name = '';
+    this.email = '';
+    this.message = '';
+
+    const confirmationMessage = document.getElementById('confirmationMessage') as HTMLElement;
+    confirmationMessage.style.display = 'block';
+
+    setTimeout(() => {
+      confirmationMessage.style.display = 'none';
+    }, 5000);
+  }
 }

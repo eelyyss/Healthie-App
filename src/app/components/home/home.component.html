@@ -66,13 +66,16 @@
   <section class="contact">
     <h2 data-aos="fade-up">Contacto</h2>
     <p data-aos="fade-up">¿Tienes alguna pregunta? ¡Contáctanos!</p>
-    <form data-aos="fade-up">
-      <input type="text" placeholder="Nombre" required>
-      <input type="email" placeholder="Correo Electrónico" required>
-      <textarea placeholder="Mensaje" required></textarea>
+    <form id="contactForm" (ngSubmit)="onSubmit()" #contactForm="ngForm" data-aos="fade-up">
+      <input type="text" id="name" placeholder="Nombre" required [(ngModel)]="name" name="name">
+      <input type="email" id="email" placeholder="Correo Electrónico" required [(ngModel)]="email" name="email">
+      <textarea id="message" placeholder="Mensaje" required [(ngModel)]="message" name="message"></textarea>
       <button type="submit">Enviar</button>
     </form>
+    <p></p>
+    <p id="confirmationMessage" style="display: none; color: green;">Correo enviado exitosamente.</p>
   </section>
+
 </div>
 
 <footer class="footer">
