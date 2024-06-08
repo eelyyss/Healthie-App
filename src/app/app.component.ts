@@ -53,9 +53,10 @@ export class AppComponent implements OnInit {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+    const body = document.body;
     if (this.isMenuOpen) {
       document.getElementById('navbarNav')?.classList.add('show');
-      document.body.classList.add('overlay-active');
+      body.classList.add('overlay-active');
     } else {
       this.closeMenu();
     }
