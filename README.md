@@ -3,7 +3,7 @@
 Este proyecto, HealthIE, tiene como objetivo principal desarrollar una aplicación web que permita a los usuarios del hospital acceder de manera sencilla y eficiente a diversas funcionalidades médicas. Estas incluyen la gestión de citas médicas, el acceso a resultados de exámenes y la visualización de la medicación. La aplicación está diseñada para ser intuitiva y fácil de usar, especialmente para usuarios mayores, garantizando una experiencia de usuario óptima y accesible.
 
 # Iniciar la app
-Para iniciar la aplicación, ejecuta el comando npm run start:all en tu terminal y luego abre localhost:3000 en tu navegador.
+Para iniciar la aplicación, ejecuta el comando npm run start:all en tu terminal y luego abre localhost:3000 o https://healthie-six.vercel.app/home en tu navegador.
 
 # Tecnologías
 
